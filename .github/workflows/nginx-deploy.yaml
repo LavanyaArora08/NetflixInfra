@@ -30,6 +30,10 @@ jobs:
         run: |
           scp -o StrictHostKeyChecking=no -i mykey.pem -r * ubuntu@$EC2_PUBLIC_IP:/home/ubuntu/app
 
+      - name: Verify file existence on EC2
+        run: |
+          ssh -i mykey.pem -o StrictHostKeyChecking=no ubuntu@$EC2_PUBLIC_IP "ls -l /home/ubuntu/app"
+
       - name: Execute deploy script on EC2
         run: |
           ssh -i mykey.pem -o StrictHostKeyChecking=no ubuntu@$EC2_PUBLIC_IP "bash /home/ubuntu/app/deploy.sh"
