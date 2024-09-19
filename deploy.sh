@@ -1,6 +1,9 @@
 #!/bin/bash
 set -e
 
+# Variables
+PORT=8080
+
 echo ""
 echo "Installing python3.12-venv..."
 echo "--------------------------------"
@@ -20,9 +23,14 @@ source venv/bin/activate
 echo ""
 echo "Installing Python dependencies..."
 echo "--------------------------------"
-pip install -r /home/ubuntu/app/requirements.txt  # Ensure correct path
+pip install -r requirements.txt
+
+echo ""
+echo "Stopping any process using port $PORT..."
+echo "--------------------------------"
+sudo fuser -k $PORT/tcp || true  # Kill process using the port, suppress errors if none
 
 echo ""
 echo "Starting the Python application..."
 echo "--------------------------------"
-python /home/ubuntu/app/app.py  # Ensure correct path to app.py
+python app.py
