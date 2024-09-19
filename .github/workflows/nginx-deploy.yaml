@@ -6,7 +6,7 @@ on:
       - main
 
 env:
-  EC2_PUBLIC_IP: 3.88.215.11
+  EC2_PUBLIC_IP: 3.88.215.11  # Your EC2 instance public IP
   SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
 
 jobs:
@@ -22,18 +22,18 @@ jobs:
           echo "$SSH_PRIVATE_KEY" > mykey.pem
           chmod 600 mykey.pem
 
-      - name: Create directory on EC2
+      - name: Create app directory on EC2
         run: |
           ssh -i mykey.pem -o StrictHostKeyChecking=no ubuntu@$EC2_PUBLIC_IP "mkdir -p /home/ubuntu/app"
 
       - name: Copy files to EC2
         run: |
-          scp -o StrictHostKeyChecking=no -i mykey.pem -r * ubuntu@$EC2_PUBLIC_IP:/home/ubuntu/app
+          scp -o StrictHostKeyChecking=no -i mykey.pem -r ./* ubuntu@$EC2_PUBLIC_IP:/home/ubuntu/app
 
-      - name: Verify file existence on EC2
+      - name: Verify copied files on EC2
         run: |
-          ssh -i mykey.pem -o StrictHostKeyChecking=no ubuntu@$EC2_PUBLIC_IP "ls -l /home/ubuntu/app"
+          ssh -i mykey.pem -o StrictHostKeyChecking=no ubuntu@$EC2_PUBLIC_IP "ls -R /home/ubuntu/app"
 
       - name: Execute deploy script on EC2
         run: |
-          ssh -i mykey.pem -o StrictHostKeyChecking=no ubuntu@$EC2_PUBLIC_IP "bash /home/ubuntu/app/deploy.sh"
+          ssh -i mykey.pem -o StrictHostKeyChecking=no ubuntu@$EC2_PUBLIC_IP "cd /home/ubuntu/app && bash deploy.sh"
