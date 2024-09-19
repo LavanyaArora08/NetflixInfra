@@ -7,7 +7,7 @@ on:
 
 env:
   EC2_PUBLIC_IP: 3.88.215.11  # Your EC2 instance public IP
-  SSH_PRIVATE_KEY: chmod 600 ${{ secrets.SSH_PRIVATE_KEY }}
+  SSH_PRIVATE_KEY: chmod  ${{ secrets.SSH_PRIVATE_KEY }}
   APP_DIR: /home/ubuntu/app  # Define the app directory as an environment variable
 
 jobs:
