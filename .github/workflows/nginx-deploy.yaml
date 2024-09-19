@@ -6,7 +6,7 @@ on:
       - main
 
 env:
-  EC2_PUBLIC_IP: 18.212.58.95  # Your EC2 instance public IP
+  EC2_PUBLIC_IP: 44.207.2.250  # Your EC2 instance public IP
   SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
   APP_DIR: /home/ubuntu/app  # Define the app directory as an environment variable
 
