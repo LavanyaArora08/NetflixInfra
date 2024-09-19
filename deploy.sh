@@ -18,11 +18,11 @@ echo "--------------------------------"
 source venv/bin/activate
 
 echo ""
-echo "Install Python dependencies..."
+echo "Installing Python dependencies..."
 echo "--------------------------------"
-pip install -r requirements.txt
+pip install -r /home/ubuntu/app/requirements.txt  # Ensure correct path
 
 echo ""
 echo "Starting the Python application..."
 echo "--------------------------------"
-python app.py
+python /home/ubuntu/app/app.py  # Ensure correct path to app.py
