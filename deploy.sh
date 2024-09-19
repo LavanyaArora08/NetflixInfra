@@ -28,7 +28,7 @@ pip install -r requirements.txt
 echo ""
 echo "Stopping any process using port $PORT..."
 echo "--------------------------------"
-sudo fuser -k $PORT/tcp || true  # Kill process using the port, suppress errors if none
+sudo fuser -k $PORT/tcp || true  # Kill process using the port, suppress errors if non
 
 echo ""
 echo "Starting the Python application..."
