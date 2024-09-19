@@ -8,6 +8,7 @@ on:
 env:
   EC2_PUBLIC_IP: 3.88.215.11  # Your EC2 instance public IP
   SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+  APP_DIR: /home/ubuntu/app  # Define the app directory as an environment variable
 
 jobs:
   Deploy:
@@ -24,16 +25,16 @@ jobs:
 
       - name: Create app directory on EC2
         run: |
-          ssh -i mykey.pem -o StrictHostKeyChecking=no ubuntu@$EC2_PUBLIC_IP "mkdir -p /home/ubuntu/app"
+          ssh -i mykey.pem -o StrictHostKeyChecking=no ubuntu@$EC2_PUBLIC_IP "mkdir -p $APP_DIR"
 
       - name: Copy files to EC2
         run: |
-          scp -o StrictHostKeyChecking=no -i mykey.pem -r ./* ubuntu@$EC2_PUBLIC_IP:/home/ubuntu/app
+          scp -o StrictHostKeyChecking=no -i mykey.pem -r ./* ubuntu@$EC2_PUBLIC_IP:$APP_DIR
 
       - name: Verify copied files on EC2
         run: |
-          ssh -i mykey.pem -o StrictHostKeyChecking=no ubuntu@$EC2_PUBLIC_IP "ls -R /home/ubuntu/app"
+          ssh -i mykey.pem -o StrictHostKeyChecking=no ubuntu@$EC2_PUBLIC_IP "ls -R $APP_DIR"
 
       - name: Execute deploy script on EC2
         run: |
-          ssh -i mykey.pem -o StrictHostKeyChecking=no ubuntu@$EC2_PUBLIC_IP "cd /home/ubuntu/app && bash deploy.sh"
+          ssh -i mykey.pem -o StrictHostKeyChecking=no ubuntu@$EC2_PUBLIC_IP "cd $APP_DIR && bash deploy.sh"
