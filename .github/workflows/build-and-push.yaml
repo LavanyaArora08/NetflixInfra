@@ -9,8 +9,8 @@ env:
   EC2_PUBLIC_IP: 44.207.2.250  # Your EC2 instance public IP
   APP_DIR: /home/ubuntu  # Define the app directory as an environment variable
   DOCKERHUB_USERNAME: lavanyaarora08  # Replace with your DockerHub username
-  DOCKERHUB_REPO_CATALOG: lavanyaarora08/netflix-movie-catalog  # DockerHub repository for the Netflix Catalog service
-  DOCKERHUB_REPO_FRONTEND: lavanyaarora08/netflix-frontend  # DockerHub repository for the Netflix Frontend service
+  DOCKERHUB_REPO_CATALOG: lavanyaarora08/07-netflix-movie-catalog  # DockerHub repository for the Netflix Catalog service
+  DOCKERHUB_REPO_FRONTEND: lavanyaarora08/08-netflix-frontend  # DockerHub repository for the Netflix Frontend service
   IMAGE_TAG: latest  # You can set it dynamically using Git SHA or another method if needed
 
 jobs:
