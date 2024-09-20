@@ -7,10 +7,10 @@ on:
 
 env:
   EC2_PUBLIC_IP: 44.207.2.250 # Your EC2 instance public IP
-  APP_DIR: /home/ubuntu/app  # Define the app directory as an environment variable
+  APP_DIR: /home/ubuntu  # Define the app directory as an environment variable
   ECR_REGISTRY: 700935310038.dkr.ecr.us-east-1.amazonaws.com  # Your AWS account ECR registry
-  ECR_REPO_CATALOG: ai-lavanya/netflix-catalog  # ECR repository for the Netflix Catalog service
-  ECR_REPO_FRONTEND: ai-lavanya/netflix-frontend  # ECR repository for the Netflix Frontend service
+  ECR_REPO_CATALOG: ai-lavanya-2/07-netflix-movie-catalog  # ECR repository for the Netflix Catalog service
+  ECR_REPO_FRONTEND: ai-lavanya-2/08-netflix-frontend  # ECR repository for the Netflix Frontend service
   IMAGE_TAG: latest  # You can set it dynamically using Git SHA or another method if needed
 
 jobs:
