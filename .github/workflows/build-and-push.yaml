@@ -27,15 +27,7 @@ jobs:
           
             - name: Build Docker images for catalog and frontend services
         run: |
-          docker build -t $DOCKERHUB_USERNAME/$DOCKERHUB_REPO_CATALOG:$IMAGE_TAG ./07-netflix-movie-catalog/docker
-          docker build -t $DOCKERHUB_USERNAME/$DOCKERHUB_REPO_FRONTEND:$IMAGE_TAG ./08-netflix-frontend/docker
-
-
-      - name: Build Docker images for catalog and frontend services
-        run: |
-          docker build -t $DOCKERHUB_USERNAME/$DOCKERHUB_REPO_CATALOG:$IMAGE_TAG ./07-netflix-movie-catalog
           docker build -t $DOCKERHUB_USERNAME/$DOCKERHUB_REPO_FRONTEND:$IMAGE_TAG ./08-netflix-frontend
-
       - name: Push Docker images to DockerHub
         run: |
           docker push $DOCKERHUB_USERNAME/$DOCKERHUB_REPO_CATALOG:$IMAGE_TAG
