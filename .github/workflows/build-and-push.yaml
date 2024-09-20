@@ -31,7 +31,6 @@ jobs:
 
       - name: Push Docker images to DockerHub
         run: |
-          docker push $DOCKERHUB_USERNAME/$DOCKERHUB_REPO_CATALOG:$IMAGE_TAG
           docker push $DOCKERHUB_USERNAME/$DOCKERHUB_REPO_FRONTEND:$IMAGE_TAG
 
       - name: Set up SSH key
